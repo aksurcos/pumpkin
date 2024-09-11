@@ -3,5 +3,5 @@ from django.http import HttpResponse
 
 # Create your views here.
 
-def accounts(request):
-    return HttpResponse("This page will show the detail of accounts / users.")
+def story(request):
+    return HttpResponse("On this page, stories will be posted.")

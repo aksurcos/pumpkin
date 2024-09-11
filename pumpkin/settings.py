@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'scary_pumpkin',
     'accounts',
+    'story',
 ]
 
 MIDDLEWARE = [
