@@ -7,8 +7,6 @@ assignees: ''
 
 ---
 
-Give it a descriptive template name and briefly explain the purpose in About.
-
 As a **role** I can **capability** so that **received benefit**
 
 - Acceptance criteria 1
