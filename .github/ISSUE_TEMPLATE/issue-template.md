@@ -9,7 +9,7 @@ assignees: ''
 
 As a            so that I can 
 
-Acceptence Criteria
+Acceptance Criteria
 
 1. 
 2. 
