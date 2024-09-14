@@ -3,5 +3,9 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+
 def accounts(request):
-    return HttpResponse("This page will show the detail of accounts / users.")
+    return render (request, "accounts.html")
+
+def accounts_details(request, id):
+    return render(request, "accounts-details.html", {"id":id})
