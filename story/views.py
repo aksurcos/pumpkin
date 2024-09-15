@@ -8,3 +8,9 @@ def story(request):
 
 def story_details(request, id):
     return render(request, "story-details.html", {"id":id})
+
+def myth(request):
+    return render (request, "myth.html")
+
+def myth_details(request, id):
+    return render(request, "myth-details.html",{"id":id})
