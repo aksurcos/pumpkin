@@ -1,0 +1,36 @@
+ /* COLOR PALETTE */
+ :root {
+    --primaryColor: rgb(212, 106, 0);
+  }
+  
+body{
+    min-height: 100vh;
+}
+
+header {
+    z-index: 9;
+}
+.body-bg{
+background-color: var(--primaryColor);
+}
+
+
+footer {   
+    width: 100%; 
+    position: sticky;
+    top: 100%;
+
+}
+
+#helpful-info {
+    text-align: center;
+    padding: 0;
+    display: flex;
+    justify-content: space-evenly;
+    list-style-type: none;   
+}
+
+#helpful-info i {
+    font-size: 150%;
+    color: rgb(22, 20, 20);
+}
