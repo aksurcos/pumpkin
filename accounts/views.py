@@ -9,3 +9,9 @@ def accounts(request):
 
 def accounts_details(request, id):
     return render(request, "accounts-details.html", {"id":id})
+
+def login(request):
+    return render (request, "login.html")
+
+def register(request):
+    return render (request, "register.html")

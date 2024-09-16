@@ -2,7 +2,7 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" id="pumpkin-halloween-spooky-scary">
+      <a class="navbar-brand" href="{% url 'index' %}"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="64" height="64" id="pumpkin-halloween-spooky-scary">
         <defs>
           <path id="a" d="M15.464.433H.779v16.664h14.685V.433z"></path>
           <path id="c" d="M63.893 50.803H0V.443h63.893v50.36z"></path>
@@ -48,16 +48,16 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Register</a>
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Login</a>
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="{% url 'index' %}">Logout</a>
           </li>
         </ul>
       </div>
