@@ -10,11 +10,19 @@ body{
 header {
     z-index: 9;
 }
+
 .body-bg{
 background-color: var(--primaryColor);
 }
 
 
+/*Navbar design*/
+
+.navbar {
+    font-size: 18px;
+}
+
+/*Footer Design*/
 footer {   
     width: 100%; 
     position: sticky;
