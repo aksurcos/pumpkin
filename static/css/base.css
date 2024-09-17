@@ -43,6 +43,10 @@ background-color: var(--primaryColor);
     font-size: 35px;
 }
 
+.nav-link {
+    color: rgb(212, 106, 0);
+}
+
 /*Footer Design*/
 footer {   
     width: 100%; 
