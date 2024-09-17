@@ -13,6 +13,7 @@ def login_request(request):
         return redirect ("index")
 
     if request.method == "POST":
+        form = LoginUserForm(request, data=request.POST)
         print(form.is_valid())
         if form.is_valid():
             username =  form.cleaned_data.get("username")
@@ -44,6 +45,9 @@ def register_request(request):
             return render(request, "register.html")
     form = NewUserForm()
     return render(request, "register.html", {"form":form})
+
+def account_details(request):
+    return redirect('account-details.html')
 
 def logout_request(request):
     logout(request)
