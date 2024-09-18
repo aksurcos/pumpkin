@@ -18,6 +18,8 @@ body{
     font-family: var(--text-font);
     font-size: large; 
     background-image: url('/static/images/body-background.jpg');
+    
+    
 }
 
 header {
@@ -45,6 +47,10 @@ background-color: var(--primaryColor);
 
 .nav-link {
     color: rgb(212, 106, 0);
+}
+
+.row {
+    margin-right: 0;
 }
 
 /*Footer Design*/

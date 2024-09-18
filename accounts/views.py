@@ -20,9 +20,11 @@ def login_request(request):
             password = form.cleaned_data.get("password")
             user = authenticate(request, username=username, password=password)
     
-        if user is not None:
-            login(request, user)
-            return redirect("index")
+            if user is not None:
+                login(request, user)
+                return redirect("index")            
+            else:
+                return render(request, 'login.html', {'form':form})                
         else:
             return render(request, 'login.html', {'form':form})
     else:
@@ -46,10 +48,25 @@ def register_request(request):
     form = NewUserForm()
     return render(request, "register.html", {"form":form})
 
-def account_details(request):
-    return redirect('account-details.html')
 
 def logout_request(request):
     logout(request)
     messages.success(request, "You've been successfully logged out.")
     return redirect ("index")
+
+def account_details(request):
+    return render(request, "accounts-details.html")
+
+def change_password(request):
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, "Your password has been changed")
+            return redirect("account_details")
+        else:
+            return render(request, "change-password.html", {"form":form})
+    
+    form = PasswordChangeForm(request.user)
+    return render(request, "change-password.html", {"form":form})
