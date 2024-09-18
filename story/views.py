@@ -24,8 +24,9 @@ def story_create(request):
         "form": form
     })
 
-def StoryList(request):
-    return render (request, "story.html")
+def story(request):
+    stories = Story.objects.all().order_by('-shared_at')
+    return render (request, "story.html", {'stories': stories})
 
 def story_details(request, slug):
     story = get_object_or_404(Story, slug=slug)

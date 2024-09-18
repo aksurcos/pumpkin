@@ -9,25 +9,25 @@
 
 {% block content %}
 
+<div class="container">
 
-    
-<h1>STORIES</h2>
+    <h1 id="story-h1">STORIES</h1>
 
-<a href="create" class="btn btn-dark">Click to create your story.</a>
-
-{% for story in stories %}
-
-<div class="card mb-3">
-    <div class="col-md-9">
-        <div class="card-body">
-            <h3>{{story.title}}</h3>
-            <p>{{story.country}}</p>
-            <p>{{story.categories}}</p>
-            <p>{{story.shared_at}}</p>
-            <p>{{story.author}}</p>
-        
-        
-        </div>
+        <a href="create" class="btn btn-dark">Click to create your story.</a>
+<hr>
+        {% for story in stories %}
+    <div class="card">
+        <div class="row">
+        <div class="col-md-12"> 
+            <div class="card-body">                   
+                    <h3 class="card-title">{{ story.title }}</h3>
+                    <p class="card-info"><strong>from: </strong> {{ story.country }}  <strong>posted at:</strong> {{ story.shared_at|date:"d/m/Y h:i A" }}</p>
+                    <p class="card-text">{{ story.description|slice:":100" }}...</p>
+                    <p class="card-author">by <strong>{{ story.author }}</strong></p>
+                    <a href="{% url 'story_details' story.slug %}" class="btn btn-dark">Click to read all story.</a>      
+                </div>
+            </div>
+        </div>   
     </div>
 </div>
 {% endfor %}

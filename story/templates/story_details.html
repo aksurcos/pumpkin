@@ -7,8 +7,21 @@
     
 {% endblock %}
 
-{%  block content %}
+{%  block content %}    
+<div class="container detail-container">
+    <div class="card detail-card col d-flex justify-content-center align-items-left">
+        <h2 class="card-title">{{ story.title }}</h2>
+        <p class="card-country">From: {{ story.country }}</p>
+        <p class="card-date">Posted at: {{ story.shared_at|date:"d/m/Y h:i A" }}</p>
+        <p class="card-text">{{ story.description }}</p>
+        <p class="card-author">By {{ story.author }}</p>
+        <button href=# class="btn btn-dark">Click to edit your story.</button> 
+    </div>
+</div>
 
-    <h1>Story details : {{id}}</h1>
+
+{% endblock %}
+
+{% block js_files %}
 
 {% endblock %}
