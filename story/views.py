@@ -24,7 +24,7 @@ def story_create(request):
         "form": form
     })
 
-def story(request):
+def storyList(request):
     stories = Story.objects.all().order_by('-shared_at')
     return render (request, "story.html", {'stories': stories})
 

@@ -44,7 +44,7 @@ def register_request(request):
             login(request,user)
             return redirect("index")
         else:
-            return render(request, "register.html")
+            return render(request, "register.html", {"form":form})
     form = NewUserForm()
     return render(request, "register.html", {"form":form})
 

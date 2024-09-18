@@ -11,7 +11,12 @@ class Story(models.Model):
     description = models.CharField(max_length=3000)
     shared_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    slug = models.SlugField(default="", blank=True, null=False, db_index=True, unique=True)
+    slug = models.SlugField(unique=True, blank=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:  
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
 
     def __str__ (self):
         return f"{self.title}, {self.country}, {self.author}"
