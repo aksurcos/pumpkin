@@ -8,22 +8,32 @@
 {% endblock %}
 
 {% block content %}
-    
-<h2>There will be story list here.</h2>
 
-<div class="row">
-    <div class="col-md-4 mb-4">
-        <div class="card">
-            <div class="card-body card-bg">
-                <h5 class="card-title">Title</h5>
-                <p class="card-country"> From this country </p>
-                <p class="card-text"><small class="text-muted">Date</small></p>
-                <p class="card-text"> Post content sliced...</p>
-                
-                <a href="#" class="btn btn-dark">Click to see details</a>
-            </div>
+
+    
+<h1>STORIES</h2>
+
+<a href="create" class="btn btn-dark">Click to create your story.</a>
+
+{% for story in stories %}
+
+<div class="card mb-3">
+    <div class="col-md-9">
+        <div class="card-body">
+            <h3>{{story.title}}</h3>
+            <p>{{story.country}}</p>
+            <p>{{story.categories}}</p>
+            <p>{{story.shared_at}}</p>
+            <p>{{story.author}}</p>
+        
+        
         </div>
     </div>
 </div>
+{% endfor %}
     
+{% endblock %}
+
+{% block js_files %}
+    <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
