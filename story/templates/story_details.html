@@ -8,19 +8,50 @@
 {% endblock %}
 
 {%  block content %}    
-<div class="container detail-container">
+<div class="container">
     <div class="card detail-card col d-flex justify-content-center align-items-left">
         <h2 class="card-title">{{ story.title }}</h2>
         <p class="card-country">From: {{ story.country }}</p>
         <p class="card-date">Posted at: {{ story.shared_at|date:"d/m/Y h:i A" }}</p>
         <p class="card-text">{{ story.description|safe }}</p>
         <p class="card-author">By {{ story.author }}</p>
-        <button href=# class="btn btn-dark">Click to edit your story.</button>
+        {% if user == story.author %}
+        <a href="#" class="btn btn-dark">Click to edit your story</a>
         <a href="{% url 'delete_story' story.id %}" class="btn btn-danger">Click to delete</a> 
+        {% endif %}
     </div>
+
+
+    {% if user.is_authenticated %}
+    <div class="comment-form mt-4 card detail-card col d-flex justify-content-center align-items-left">
+        <h4>Add a comment</h4>
+            <form method="POST" action="{% url 'add_comment' story.slug %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <textarea name="content" class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark mt-2">Submit Comment</button>
+        </form>
+    </div>
+    {% else %}
+    <p class="mt-4">Please <a href="{% url 'login' %}">log in</a> to add a comment.</p>
+    {% endif %}
+    <div class="comments-section mt-4 card col detail-card card d-flex justify-content-center">
+        <h3>Comments</h3>
+        {% if comments %}
+            {% for comment in comments %}
+                <div class="comment">
+                    <p><strong>{{ comment.author }}</strong> - {{ comment.created_at|date:"d/m/Y h:i A" }}</p>
+                    <p>{{ comment.content }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>There is not comment yet.</p>
+        {% endif %}
+    </div>   
+    </div>
+    
 </div>
-
-
 {% endblock %}
 
 {% block js_files %}

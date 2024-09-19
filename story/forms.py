@@ -1,5 +1,5 @@
 from django import forms
-from .models import Story
+from .models import Story, Comment
 from django_summernote.widgets import SummernoteWidget
 
 class storyForm(forms.ModelForm):
@@ -33,3 +33,13 @@ class storyForm(forms.ModelForm):
                 'required': "Description must not be empty"
             }
         }
+
+class commentForm (forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = {'content'}
+        labels = {'content' : 'Write your comment here.'}
+        widgets = {'content': forms.Textarea(attrs={'class':'form-control'})},
+        error_messages = { 
+            'content': {'required': "Comment must not be empty."}}
+

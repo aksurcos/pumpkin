@@ -1,8 +1,8 @@
 from django.http.response import Http404, HttpResponseNotFound, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
-from .models import Story
-from .forms import storyForm
+from .models import Story, Comment
+from .forms import storyForm, commentForm
 import random
 import os
 from django.contrib.auth.decorators import login_required
@@ -34,10 +34,25 @@ def storyList(request):
 
 def story_details(request, slug):
     story = get_object_or_404(Story, slug=slug)
+    comments = Comment.objects.filter(story=story).order_by('-created_at')
     context = {
-        "story": story
+        "story": story,
+        "comments": comments
     }
     return render(request, "story_details.html", context)
+
+
+@login_required
+def add_comment(request, slug):
+    story = get_object_or_404(Story, slug=slug)
+    if request.method == 'POST':
+        form = commentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.story = story
+            comment.author = request.user
+            comment.save()
+    return redirect ('story_details', slug=slug)
 
 @login_required
 def delete(request, id):
