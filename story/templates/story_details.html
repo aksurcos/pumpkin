@@ -22,7 +22,6 @@
     </div>
 
 
-    {% if user.is_authenticated %}
     <div class="comment-form mt-4 card detail-card col d-flex justify-content-center align-items-left">
         <h4>Add a comment</h4>
             <form method="POST" action="{% url 'add_comment' story.slug %}">
@@ -33,9 +32,6 @@
             <button type="submit" class="btn btn-dark mt-2">Submit Comment</button>
         </form>
     </div>
-    {% else %}
-    <p class="mt-4">Please <a href="{% url 'login' %}">log in</a> to add a comment.</p>
-    {% endif %}
     <div class="comments-section mt-4 card col detail-card card d-flex justify-content-center">
         <h3>Comments</h3>
         {% if comments %}
