@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Story
+from .models import Story, Comment
 # Register your models here.
 
 @admin.register(Story)
@@ -12,5 +12,12 @@ class StoryAdmin(SummernoteModelAdmin):
     list_per_page = (10)
     list_display_links = ('title',)
     prepopulated_fields = {'slug': ('title',)}
+
+@admin.register(Comment)
+class CommentAdmin(SummernoteModelAdmin):
+    summernote_fields = ("content")
+    list_display = ('author', 'created_at', 'story')
+    list_filter = ('author', 'story')
+    search_fields =('author', 'story')
 
 

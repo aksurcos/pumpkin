@@ -52,6 +52,7 @@ def add_comment(request, slug):
             comment.story = story
             comment.author = request.user
             comment.save()
+            messages.success(request, "You've successfully commented.")
     return redirect ('story_details', slug=slug)
 
 @login_required
