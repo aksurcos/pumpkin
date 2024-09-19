@@ -15,7 +15,8 @@
         <p class="card-date">Posted at: {{ story.shared_at|date:"d/m/Y h:i A" }}</p>
         <p class="card-text">{{ story.description }}</p>
         <p class="card-author">By {{ story.author }}</p>
-        <button href=# class="btn btn-dark">Click to edit your story.</button> 
+        <button href=# class="btn btn-dark">Click to edit your story.</button>
+        <a href="{% url 'delete_story' story.id %}" class="btn btn-danger">Click to delete</a> 
     </div>
 </div>
 

@@ -17,15 +17,12 @@ body{
     min-height: 100vh;
     font-family: var(--text-font);
     font-size: large; 
-    background-image: url('/static/images/body-background.jpg');
-    
-    
+    background-image: url('/static/images/body-background.jpg'); 
 }
 
 header {
     z-index: 9;
 }
-
 
 /*Index.html design*/
 .card {
@@ -39,9 +36,11 @@ header {
 }
 
 /*Story details list page */
-.detail-container {
-    margin-top: 20px;
+.container.detail-container{
+    padding-top: 5%;
 }
+
+
 
 .detail-card {
     padding: 2rem;

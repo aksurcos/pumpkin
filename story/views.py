@@ -35,6 +35,16 @@ def story_details(request, slug):
     }
     return render(request, "story_details.html", context)
 
+def delete(request, id):
+    story = get_object_or_404(Story, id=id)
+    if request.method == 'POST':
+        story.delete()
+        return render (request, "index.html")
+    
+    return render(request, "delete-confirm.html", {
+        "story": story
+    })
+
 
 
 def MythList(request):

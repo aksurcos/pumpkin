@@ -12,8 +12,11 @@
 <div class="container">
 
     <h1 id="story-h1">STORIES</h1>
-
+    {% if user.is_authenticated %}
         <a href="create" class="btn btn-dark">Click to create your story.</a>
+    {% else %}
+        <a href="{% url 'login' %}" class="btn btn-dark">Login to create your story.</a>
+    {% endif %}
 <hr>
         {% for story in stories %}
     <div class="card">
