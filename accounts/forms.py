@@ -14,9 +14,6 @@ class LoginUserForm(AuthenticationForm):
 
     def clean_username(self):
         username = self.cleaned_data.get("username")
-        
-        if username == "superadmin":
-            messages.success(self.request, "Welcome, admin!")
         return username
 
 class NewUserForm(UserCreationForm):
