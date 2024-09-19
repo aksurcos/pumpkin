@@ -1,4 +1,4 @@
-from django.http.response import Http404, HttpResponseNotFound, HttpResponseRedirect
+from django.http.response import Http404, HttpResponseNotFound, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from .models import Story
@@ -39,13 +39,22 @@ def story_details(request, slug):
     }
     return render(request, "story_details.html", context)
 
+@login_required
 def delete(request, id):
     story = get_object_or_404(Story, id=id)
+
+    if story.author != request.user:
+        messages.warning(request, "You don't have permission to delete this story.")
+        context = {
+        "story": story
+    }
+        return render(request, "story_details.html", context)
+    
     if request.method == 'POST':
         messages.success(request, "Your story has been deleted successfully.")
         story.delete()
-        return render (request, "index.html")
-    
+        return redirect('story')
+
     return render(request, "delete-confirm.html", {
         "story": story
     })
