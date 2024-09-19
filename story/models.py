@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class Story(models.Model):
     title = models.CharField(max_length=300)
     country = models.CharField(max_length=100)
-    description = models.CharField(max_length=3000)
+    description = models.TextField(max_length=3000) 
     shared_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, blank=True)

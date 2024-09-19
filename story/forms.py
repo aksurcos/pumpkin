@@ -1,5 +1,7 @@
 from django import forms
 from .models import Story
+from django_summernote.widgets import SummernoteWidget
+
 class storyForm(forms.ModelForm):
     class Meta:
         model = Story
@@ -13,14 +15,14 @@ class storyForm(forms.ModelForm):
         widgets = {
             'title' : forms.TextInput(attrs={'class':'form-control'}),
             'country' : forms.TextInput(attrs={'class':'form-control'}),
-            'description' : forms.Textarea(attrs={'class':'form-control','rows':4}),
-            
+            'description': SummernoteWidget(attrs={'class':'form-control'}),
+                
         }
 
         error_messages = {
             'title' : {
                 'min_length': "Title of story must be at least 4 characters.",
-                'required' : "Title of story must not  be empty."
+                'required' : "Title of story must not  be empty.",
             },
 
             'country' : {

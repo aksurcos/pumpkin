@@ -22,10 +22,12 @@ def login_request(request):
     
             if user is not None:
                 login(request, user)
+                messages.success(request, "Welcome, you have logged in successfully.")
                 return redirect("index")            
             else:
                 return render(request, 'login.html', {'form':form})                
         else:
+            messages.warning(request, "You could not log in.")
             return render(request, 'login.html', {'form':form})
     else:
         form = LoginUserForm()
@@ -66,6 +68,7 @@ def change_password(request):
             messages.success(request, "Your password has been changed")
             return redirect("account_details")
         else:
+            messages.alert(request, "Your password has not been changed. Check again")
             return render(request, "change-password.html", {"form":form})
     
     form = PasswordChangeForm(request.user)

@@ -7,6 +7,10 @@
     
 {% endblock %}
 
+{% block page_title %}
+Stories
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
@@ -25,7 +29,7 @@
             <div class="card-body">                   
                     <h3 class="card-title">{{ story.title }}</h3>
                     <p class="card-info"><strong>from: </strong> {{ story.country }}  <strong>posted at:</strong> {{ story.shared_at|date:"d/m/Y h:i A" }}</p>
-                    <p class="card-text">{{ story.description|slice:":100" }}...</p>
+                    <p class="card-text">{{ story.description|slice:":100"|safe }}...</p>
                     <p class="card-author">by <strong>{{ story.author }}</strong></p>
                     <a href="{% url 'story_details' story.slug %}" class="btn btn-dark">Click to read all story.</a>      
                 </div>
