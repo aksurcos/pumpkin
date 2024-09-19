@@ -15,7 +15,7 @@ class storyForm(forms.ModelForm):
         widgets = {
             'title' : forms.TextInput(attrs={'class':'form-control'}),
             'country' : forms.TextInput(attrs={'class':'form-control'}),
-            'description': SummernoteWidget(attrs={'class':'form-control'}),
+            'description': SummernoteWidget(attrs={'class':'form-control'}),           
                 
         }
 

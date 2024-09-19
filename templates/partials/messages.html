@@ -1,5 +1,5 @@
 {% if messages %}
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0" id="msgs">
         {% for message in messages %}
             <div class="alert {{message.tags}} alert-dismissible fade show m-0 text-center" role="alert">
                 {{ message }}
@@ -8,3 +8,4 @@
         {% endfor %}
     </div>
 {% endif %}
+

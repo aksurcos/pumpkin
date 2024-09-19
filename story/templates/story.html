@@ -31,7 +31,11 @@ Stories
                     <p class="card-info"><strong>from: </strong> {{ story.country }}  <strong>posted at:</strong> {{ story.shared_at|date:"d/m/Y h:i A" }}</p>
                     <p class="card-text">{{ story.description|slice:":100"|safe }}...</p>
                     <p class="card-author">by <strong>{{ story.author }}</strong></p>
-                    <a href="{% url 'story_details' story.slug %}" class="btn btn-dark">Click to read all story.</a>      
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'story_details' story.slug %}" class="btn btn-dark">Click to read all story.</a>
+                    {% else %}  
+                    <a href="{% url 'login' %}" class="btn btn-dark">Click to log in and read the details.</a>
+                    {% endif %}
                 </div>
             </div>
         </div>   
@@ -43,5 +47,5 @@ Stories
 {% endblock %}
 
 {% block js_files %}
-    <script src="{% static 'js/script.js' %}"></script>
+
 {% endblock %}

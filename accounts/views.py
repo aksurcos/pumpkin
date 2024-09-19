@@ -44,6 +44,7 @@ def register_request(request):
             password = form.cleaned_data["password1"]
             user = authenticate(username=username, password=password)
             login(request,user)
+            messages.success(request, "Welcome, You have successfully registered.")
             return redirect("index")
         else:
             return render(request, "register.html", {"form":form})
@@ -53,7 +54,7 @@ def register_request(request):
 
 def logout_request(request):
     logout(request)
-    messages.success(request, "You've been successfully logged out.")
+    messages.success(request, "You have successfully logged out.")
     return redirect ("index")
 
 def account_details(request):
@@ -68,7 +69,7 @@ def change_password(request):
             messages.success(request, "Your password has been changed")
             return redirect("account_details")
         else:
-            messages.alert(request, "Your password has not been changed. Check again")
+            messages.warning(request, "Your password has not been changed. Check again")
             return render(request, "change-password.html", {"form":form})
     
     form = PasswordChangeForm(request.user)
