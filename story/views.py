@@ -20,6 +20,7 @@ def story_create(request):
             story = form.save(commit=False)
             story.author = request.user          
             story.save()
+            form.save_m2m()
             messages.success(request, "You have created story succesfully.")
             return redirect("story")
         

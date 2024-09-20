@@ -1,22 +1,32 @@
 from django import forms
-from .models import Story, Comment
+from .models import Story, Comment, Category
+from cloudinary.forms import CloudinaryFileField
 from django_summernote.widgets import SummernoteWidget
 
 class storyForm(forms.ModelForm):
+    categories = forms.ModelMultipleChoiceField(
+        queryset=Category.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True,
+        label='Categories'
+    )
+
     class Meta:
         model = Story
-        fields = {'title','country', 'description'}
+        fields = {'title','country','categories','description',}
         labels = {
             'title' : 'Title of your story',
             'country' : 'Country',
-            'desctription' : 'Details of your story'
+            'categories' : 'Is your post personal, story, myth or both?',
+            'description' : 'Give details',            
         }
 
         widgets = {
             'title' : forms.TextInput(attrs={'class':'form-control'}),
             'country' : forms.TextInput(attrs={'class':'form-control'}),
-            'description': SummernoteWidget(attrs={'class':'form-control'}),           
-                
+            'categories': forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}),
+            'description': SummernoteWidget(attrs={'class':'form-control'}),
+                         
         }
 
         error_messages = {
@@ -33,6 +43,9 @@ class storyForm(forms.ModelForm):
                 'required': "Description must not be empty"
             }
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.order_fields(['title', 'country', 'categories', 'description'])     
 
 class commentForm (forms.ModelForm):
     class Meta:
