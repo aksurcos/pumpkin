@@ -35,6 +35,19 @@ header {
     color: rgb(212, 106, 0) !important;
 }
 
+.image-container {
+    width: 100%;
+    max-width: 1000px; 
+    padding: 10px;
+  }
+
+  .responsive-image {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    max-height: 1000px;
+  }
+
 /*Story details list page */
 .container.detail-container{
     padding-top: 5%;
@@ -45,6 +58,8 @@ header {
 .detail-card {
     padding: 2rem;
 }
+
+
 
 
 

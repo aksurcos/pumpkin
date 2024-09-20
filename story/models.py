@@ -1,7 +1,9 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from cloudinary.models import CloudinaryField
 from django.utils import timezone
+
 
 
 # Create your models here.
@@ -11,10 +13,13 @@ class Story(models.Model):
     title = models.CharField(max_length=300)
     country = models.CharField(max_length=100)
     description = models.TextField(max_length=3000) 
+    featured_image = CloudinaryField('image', default='placeholder')
     shared_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, blank=True)
     edited_at = models.DateTimeField(null=True, blank=True)
+    
+        
     
     def save(self, *args, **kwargs):
         if not self.slug:  

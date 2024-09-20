@@ -1,11 +1,7 @@
 {% extends "base.html" %}
 
 {% load static %}
-
-
-{% block css_files %}
-    
-{% endblock %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 {% block page_title %}
 Stories
@@ -22,11 +18,11 @@ Stories
         <a href="{% url 'login' %}" class="btn btn-dark">Login to create your story.</a>
     {% endif %}
 <hr>
-        {% for story in stories %}
+        {% for story in stories %}    
     <div class="card">
         <div class="row">
-        <div class="col-md-12"> 
-            <div class="card-body">                   
+        <div class="col-md-12">
+            <div class="card-body">                                  
                     <h3 class="card-title">{{ story.title }}</h3>
                     <p class="card-info"><strong>from: </strong> {{ story.country }}  <strong>posted at:</strong> 
                     {{ story.shared_at|date:"d/m/Y h:i A" }}
@@ -36,9 +32,9 @@ Stories
                     <p class="card-text">{{ story.description|slice:":100"|safe }}...</p>
                     <p class="card-author">by <strong>{{ story.author }}</strong></p>
                     {% if user.is_authenticated %}
-                    <a href="{% url 'story_details' story.slug %}" class="btn btn-dark">Click to read all story.</a>
+                    <a href="{% url 'story_details' story.slug %}" class="btn btn-dark">Click to see the story's details.</a>
                     {% else %}  
-                    <a href="{% url 'login' %}" class="btn btn-dark">Click to log in and read the details.</a>
+                    <a href="{% url 'login' %}" class="btn btn-dark">Click to log in and see the details.</a>
                     {% endif %}
                 </div>
             </div>

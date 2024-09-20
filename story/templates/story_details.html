@@ -11,13 +11,22 @@
 <div class="container">
     <div class="card detail-card col d-flex justify-content-center align-items-left">
         <h2 class="card-title">{{ story.title }}</h2>
-        <p class="card-country">From: {{ story.country }}</p>
-        <p class="card-date">Posted at: {{ story.shared_at|date:"d/m/Y h:i A" }}</p>
+        <div class="image-container">
+            {% if "placeholder" in story.featured_image.url %}
+            <img class="card-img-top responsive-image" src="{% static 'images/default_pic.jpg' %}"
+              alt="placeholder image">
+            {% else %}
+            <img class="card-img-top responsive-image" src=" {{ post.featured_image.url }}"
+              alt="{{ post.title }}">
+            {% endif %} 
+        <p class="card-country">From: <strong>{{ story.country }}</strong></p>
+        <p class="card-date">Posted at: <strong>{{ story.shared_at|date:"d/m/Y h:i A" }}</strong></p>
         {% if story.edited_at %}
-        <p>Edited at: {{ story.edited_at|date:"d/m/Y h:i A" }}</p>
+        <p>Edited at: <strong>{{ story.edited_at|date:"d/m/Y h:i A" }}</strong></p>
         {% endif %}
+        <p class="card-author">By <strong>{{ story.author }}</strong></p>
         <p class="card-text">{{ story.description|safe }}</p>
-        <p class="card-author">By {{ story.author }}</p>
+       
         {% if user == story.author %}
         <a href="{% url 'edit_story' story.id %}" class="btn btn-dark">Click to edit</a>
         <a href="{% url 'delete_story' story.id %}" class="btn btn-danger">Click to delete</a> 
