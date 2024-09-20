@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserCreationForm
 from accounts.forms import LoginUserForm, NewUserForm
+from story.models import Story
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -57,9 +59,6 @@ def logout_request(request):
     messages.success(request, "You have successfully logged out.")
     return redirect ("index")
 
-def account_details(request):
-    return render(request, "accounts-details.html")
-
 def change_password(request):
     if request.method == "POST":
         form = PasswordChangeForm(request.user, request.POST)
@@ -74,3 +73,11 @@ def change_password(request):
     
     form = PasswordChangeForm(request.user)
     return render(request, "change-password.html", {"form":form})
+
+@login_required
+def account(request):
+    user_stories = Story.objects.filter(author=request.user).order_by('-shared_at')
+    context = {
+        'user_stories': user_stories
+    }
+    return render(request, 'account.html', context)

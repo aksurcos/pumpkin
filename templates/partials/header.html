@@ -51,7 +51,7 @@
           </li>
           {% if user.is_authenticated %}
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'account_details'%}">Welcome, {{ user.username }}</a>
+            <a class="nav-link" href="{% url 'account' %}">Welcome, {{ user.username }}</a>
         </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'logout' %}"><i class="fa-solid fa-ghost"></i> Logout</a>

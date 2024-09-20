@@ -101,6 +101,7 @@ def delete(request, id):
         "story": story
     })
 
+
 def MythList(request):
     return render (request, "myth.html")
 
