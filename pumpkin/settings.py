@@ -39,7 +39,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = True
 
 ALLOWED_HOSTS = ["8000-aksurcos-pumpkin-nvhczg6rfvy.ws.codeinstitute-ide.net"]
-CSRF_TRUSTED_ORIGINS = ['https://8000-aksurcos-pumpkin-nvhczg6rfvy.ws.codeinstitute-ide.net']
+CSRF_TRUSTED_ORIGINS = ['https://8000-aksurcos-pumpkin-nvhczg6rfvy.ws.codeinstitute-ide.net',
+    "https://*.codeanyapp.com",
+    "https://*.herokuapp.com"
+]
+
 
 
 # Application definition
@@ -51,7 +55,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
     'django_summernote',
+    'cloudinary',
     'scary_pumpkin',
     'accounts',
     'story',
