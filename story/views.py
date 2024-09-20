@@ -7,6 +7,7 @@ import random
 import os
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.utils import timezone
 
 # Create your views here.
 
@@ -55,12 +56,37 @@ def add_comment(request, slug):
             messages.success(request, "You've successfully commented.")
     return redirect ('story_details', slug=slug)
 
+
+@login_required
+def edit(request,id):
+    story = get_object_or_404(Story, id=id)
+    if story.author!= request.user:
+        context = {
+        "story": story
+    }
+        return render(request,"story_details.html", context)
+    else:
+        if request.method == 'POST':
+            form = storyForm(request.POST, instance=story)
+
+            if form.is_valid():
+                story = form.save(commit=False)
+                story.edited_at = timezone.now()
+                story.save()
+                context = {
+                "story": story
+            }
+                return render(request,"story_details.html", context)
+        else: 
+            form = storyForm(instance=story)
+        return render(request, "edit.html", {"form": form})
+        
+      
 @login_required
 def delete(request, id):
     story = get_object_or_404(Story, id=id)
 
     if story.author != request.user:
-        messages.warning(request, "You don't have permission to delete this story.")
         context = {
         "story": story
     }

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block css_files %}
+    
+{% endblock %}
+
+
+{% block page_title %}
+Edit Page
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="card detail-card col d-flex justify-content-center align-items-left">
+        <div class="col">
+         
+           <form method="POST" novalidate enctype="multipart/form-data">
+                {% csrf_token %}
+
+                {% for field in form %}
+
+                    <div class="mb-3 {% if field.errors %} invalid {% endif %}">
+                        {% if field.errors %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        <label class="form-label" for="{{ field.id_for_label}}"> {{ field.label }} </label>
+                        {{ field }}
+                    </div>
+
+                {% endfor %}
+                
+
+                <button type="submit" class="btn btn-dark">Submit</button>
+           </form>           
+           
+        </div>
+    </div>
+</div>  
+{% endblock %}
+
+{% block js_files %}
+
+{% endblock %}

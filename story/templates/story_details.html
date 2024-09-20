@@ -13,10 +13,13 @@
         <h2 class="card-title">{{ story.title }}</h2>
         <p class="card-country">From: {{ story.country }}</p>
         <p class="card-date">Posted at: {{ story.shared_at|date:"d/m/Y h:i A" }}</p>
+        {% if story.edited_at %}
+        <p>Edited at: {{ story.edited_at|date:"d/m/Y h:i A" }}</p>
+        {% endif %}
         <p class="card-text">{{ story.description|safe }}</p>
         <p class="card-author">By {{ story.author }}</p>
         {% if user == story.author %}
-        <a href="#" class="btn btn-dark">Click to edit your story</a>
+        <a href="{% url 'edit_story' story.id %}" class="btn btn-dark">Click to edit</a>
         <a href="{% url 'delete_story' story.id %}" class="btn btn-danger">Click to delete</a> 
         {% endif %}
     </div>
