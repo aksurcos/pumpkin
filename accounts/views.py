@@ -8,7 +8,7 @@ from story.models import Story
 from django.contrib.auth.decorators import login_required
 
 
-# Create your views here.
+#Login
 
 def login_request(request):
     if request.user.is_authenticated:
@@ -35,6 +35,7 @@ def login_request(request):
         form = LoginUserForm()
         return render (request, 'login.html', {'form':form})           
     
+#Register
 
 def register_request(request):
     if request.method == "POST":
@@ -53,11 +54,14 @@ def register_request(request):
     form = NewUserForm()
     return render(request, "register.html", {"form":form})
 
+#Logout
 
 def logout_request(request):
     logout(request)
     messages.success(request, "You have successfully logged out.")
     return redirect ("index")
+
+#Change Password
 
 def change_password(request):
     if request.method == "POST":
@@ -73,6 +77,8 @@ def change_password(request):
     
     form = PasswordChangeForm(request.user)
     return render(request, "change-password.html", {"form":form})
+
+#Display own profile page
 
 @login_required
 def account(request):

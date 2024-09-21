@@ -8,7 +8,7 @@ class storyForm(forms.ModelForm):
         queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=True,
-        label='Is your post just a story, a myth or both?',
+        label='Categories',
     )
 
     class Meta:
@@ -22,9 +22,9 @@ class storyForm(forms.ModelForm):
 
         widgets = {
             'title' : forms.TextInput(attrs={'class':'form-control'}),
-            'country' : forms.TextInput(attrs={'class':'form-control'}),
+            'country' : forms.TextInput(attrs={'class':'form-control', 'autocomplete':'on'}),
             'categories': forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}),
-            'description': SummernoteWidget(attrs={'class':'form-control'}),
+            'description': forms.Textarea(attrs={'class':'form-control', 'row': 4}),
                          
         }
 

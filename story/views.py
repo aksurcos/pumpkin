@@ -11,7 +11,8 @@ from django.contrib import messages
 from django.utils import timezone
 from django.db.models import Q, Count
 
-# Create your views here.
+
+#Create story
 
 @login_required(login_url='accounts/login')
 def story_create(request):  
@@ -31,7 +32,9 @@ def story_create(request):
     return render(request, "story_create.html", {
         "form": form
     })
-    
+
+#Posts List
+
 def storyList(request):
     stories_list = Story.objects.all().order_by('-shared_at')
     paginator = Paginator(stories_list, 5)
@@ -41,6 +44,8 @@ def storyList(request):
         'stories': stories
     }
     return render(request, "story.html", context)
+
+#Filtered Posts
 
 def story_list(request):
     stories = Story.objects.all().order_by('-shared_at')
@@ -72,6 +77,7 @@ def story_details(request, slug):
     }
     return render(request, "story_details.html", context)
 
+#Edit the post(by author)
 
 @login_required
 def edit(request,id):
@@ -97,7 +103,8 @@ def edit(request,id):
             form = storyForm(instance=story)
         return render(request, "edit.html", {"form": form})
         
-      
+# Delete Post (by author)  
+    
 @login_required
 def delete(request, id):
     story = get_object_or_404(Story, id=id)
@@ -116,6 +123,8 @@ def delete(request, id):
     return render(request, "delete-confirm.html", {
         "story": story
     })
+
+#Users to comment
 
 @login_required
 def add_comment(request, slug):

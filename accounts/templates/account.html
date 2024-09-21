@@ -19,8 +19,7 @@
             <h2 class="card-title">{{user.username}}'s Profile</h2>
           </div>
           <div class="card-body">
-            <p class="card-text"></p>
-            <a href="{% url 'change_password'%}" class="btn btn-dark">Click to change password</a>
+            <p class="card-text"></p>            
           </div>
           <div class="card-footer">
             <p>Registration date: {{ user.date_joined|date:"d F Y" }}</p>
@@ -31,7 +30,9 @@
                 <ul>
                 {% for story in user_stories %}
                     <li>
-                        <a href="{% url 'story_details' story.slug %}">{{ story.title }}</a>
+                        <span class="story-link" data-url="{% url 'story_details' story.slug %}" style="cursor: pointer;">
+                            {{ story.title }}
+                        </span>
                         <small>Created: {{ story.shared_at|date:"d F Y" }}</small> 
                     </li>
                 {% endfor %}
@@ -39,12 +40,20 @@
             {% else %}
                 <p>There is not any stories yet.</p>
             {% endif %}
-          </div>
+        </div>
         </div>
       </div>
     </div>
   </div>
+
+<script>
+document.querySelectorAll('.story-link').forEach(function(link) {
+  link.addEventListener('click', function() {
+      window.location.href = this.getAttribute('data-url');
+  });
+});
+</script>
+
 {% endblock %}
 
-{% block js_files %}
-{% endblock %}
+
