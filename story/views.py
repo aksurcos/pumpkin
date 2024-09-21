@@ -3,6 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from .models import Story, Comment, Category
 from .forms import storyForm, commentForm
+from django.core.paginator import Paginator
 import random
 import os
 from django.contrib.auth.decorators import login_required
@@ -32,38 +33,35 @@ def story_create(request):
     })
     
 def storyList(request):
-    stories = Story.objects.all().order_by('-shared_at')
-    return render (request, "story.html", {'stories': stories})
+    stories_list = Story.objects.all().order_by('-shared_at')
+    paginator = Paginator(stories_list, 5)
+    page_number = request.GET.get('page')
+    stories = paginator.get_page(page_number)
+    context = {
+        'stories': stories
+    }
+    return render(request, "story.html", context)
 
 def story_list(request):
     stories = Story.objects.all().order_by('-shared_at')
     categories = Category.objects.all()
     
     selected_categories = request.GET.getlist('category')
-    print("Selected categories:", selected_categories)
-    
     if selected_categories:
-        stories = stories.filter(categories__name__in=selected_categories).distinct()
-        
-        if len(selected_categories) > 1:
-            stories = stories.annotate(num_categories=Count('categories')).filter(num_categories=len(selected_categories))
-
-    stories = stories.order_by('-shared_at')
-    print("Filtered stories:", stories) 
+        stories = stories.filter(categories__name__in=selected_categories)\
+                         .annotate(num_categories=Count('categories'))\
+                         .filter(num_categories=len(selected_categories))\
+                         .distinct()
+    paginator = Paginator(stories, 5)
+    page_number = request.GET.get('page')
+    stories = paginator.get_page(page_number)
     
     context = {
         'stories': stories,
         'categories': categories,
         'selected_categories': selected_categories,
     }
-    return render(request, 'story.html', context)
-    
-    context = {
-        'stories': stories,
-        'categories': categories,
-        'selected_categories': selected_categories,
-    }
-    return render(request, 'story_list.html', context)
+    return render(request, "story.html", context)                    
 
 def story_details(request, slug):
     story = get_object_or_404(Story, slug=slug)
