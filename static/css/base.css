@@ -18,6 +18,7 @@ body{
     font-family: var(--text-font);
     font-size: large; 
     background-image: url('/static/images/body-background.jpg'); 
+    
 }
 
 header {
