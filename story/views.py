@@ -74,20 +74,6 @@ def story_details(request, slug):
 
 
 @login_required
-def add_comment(request, slug):
-    story = get_object_or_404(Story, slug=slug)
-    if request.method == 'POST':
-        form = commentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.story = story
-            comment.author = request.user
-            comment.save()
-            messages.success(request, "You've successfully commented.")
-    return redirect ('story_details', slug=slug)
-
-
-@login_required
 def edit(request,id):
     story = get_object_or_404(Story, id=id)
     if story.author!= request.user:
@@ -131,6 +117,15 @@ def delete(request, id):
         "story": story
     })
 
-
-def MythList(request):
-    return render (request, "myth.html")
+@login_required
+def add_comment(request, slug):
+    story = get_object_or_404(Story, slug=slug)
+    if request.method == 'POST':
+        form = commentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.story = story
+            comment.author = request.user
+            comment.save()
+            messages.success(request, "You've successfully commented.")
+    return redirect ('story_details', slug=slug)
