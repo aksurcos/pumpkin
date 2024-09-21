@@ -70,7 +70,7 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user)
             messages.success(request, "Your password has been changed")
-            return redirect("account_details")
+            return redirect("account")
         else:
             messages.warning(request, "Your password has not been changed. Check again")
             return render(request, "change-password.html", {"form":form})

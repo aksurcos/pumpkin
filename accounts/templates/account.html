@@ -19,11 +19,12 @@
             <h2 class="card-title">{{user.username}}'s Profile</h2>
           </div>
           <div class="card-body">
-            <p class="card-text"></p>            
+            <a href="{% url 'change_password' %}" class="btn btn-dark">Change Password</a>          
           </div>
           <div class="card-footer">
             <p>Registration date: {{ user.date_joined|date:"d F Y" }}</p>
           </div>
+          
           <div>
             <h3>{{user.username}}'s posts</h3>
             {% if user_stories %}

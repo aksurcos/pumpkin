@@ -14,3 +14,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 8000);
     }
 });
+
+const dropdowns = document.querySelectorAll('.dropdown');
+dropdowns.forEach(dropdown => {
+    dropdown.addEventListener('mouseover', function() {
+        this.querySelector('.dropdown-menu').classList.add('show');
+    });
+    dropdown.addEventListener('mouseout', function() {
+        this.querySelector('.dropdown-menu').classList.remove('show');
+    });
+});
