@@ -1,13 +1,14 @@
 from django.http.response import Http404, HttpResponseNotFound, HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
-from .models import Story, Comment
+from .models import Story, Comment, Category
 from .forms import storyForm, commentForm
 import random
 import os
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.utils import timezone
+from django.db.models import Q, Count
 
 # Create your views here.
 
@@ -33,6 +34,35 @@ def story_create(request):
 def storyList(request):
     stories = Story.objects.all().order_by('-shared_at')
     return render (request, "story.html", {'stories': stories})
+
+def story_list(request):
+    stories = Story.objects.all()
+    categories = Category.objects.all()
+    
+    selected_categories = request.GET.getlist('category')
+    print("Selected categories:", selected_categories)  # Debug için
+    
+    if selected_categories:
+        stories = stories.filter(categories__name__in=selected_categories).distinct()
+        
+        if len(selected_categories) > 1:
+            stories = stories.annotate(num_categories=Count('categories')).filter(num_categories=len(selected_categories))
+    
+    print("Filtered stories:", stories)  # Debug için
+    
+    context = {
+        'stories': stories,
+        'categories': categories,
+        'selected_categories': selected_categories,
+    }
+    return render(request, 'story.html', context)
+    
+    context = {
+        'stories': stories,
+        'categories': categories,
+        'selected_categories': selected_categories,
+    }
+    return render(request, 'story_list.html', context)
 
 def story_details(request, slug):
     story = get_object_or_404(Story, slug=slug)
@@ -105,6 +135,3 @@ def delete(request, id):
 
 def MythList(request):
     return render (request, "myth.html")
-
-def myth_details(request, id):
-    return render(request, "myth-details.html",{"id":id})

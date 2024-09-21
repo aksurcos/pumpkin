@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block page_title %}
-    Change Password Page
+   {{user.username}}'s page
 {% endblock page_title %}
    
 {% block content %}
@@ -26,7 +26,7 @@
             <p>Registration date: {{ user.date_joined|date:"d F Y" }}</p>
           </div>
           <div>
-            <h3>{{user.username}}'s Stories</h3>
+            <h3>{{user.username}}'s posts</h3>
             {% if user_stories %}
                 <ul>
                 {% for story in user_stories %}

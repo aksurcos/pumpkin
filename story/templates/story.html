@@ -1,34 +1,54 @@
 {% extends "base.html" %}
 
 {% load static %}
-<link rel="stylesheet" href="{% static 'css/base.css' %}">
 
 {% block page_title %}
-Stories
+Stories and Myths
 {% endblock %}
 
 {% block content %}
 
 <div class="container">
+    <h1 id="story-h1">STORIES & MYTHS</h1>
 
-    <h1 id="story-h1">STORIES</h1>
+    <!-- Kategori filtreleme formu -->
+    <form method="get" action="{% url 'story_list' %}" class="mb-4">
+        {% for category in categories %}
+            <label class="mr-3">
+                <input type="checkbox" name="category" value="{{ category.name }}"
+                       {% if category.name in selected_categories %}checked{% endif %}>
+                {{ category.name }}
+            </label>
+        {% endfor %}
+        <button type="submit" class="btn btn-dark">Filter</button>
+        {% if selected_categories %}
+            <a href="{% url 'story_list' %}" class="btn btn-secondary">Clear Filters</a>
+        {% endif %}
+    </form>
+
     {% if user.is_authenticated %}
         <a href="create" class="btn btn-dark">Click to create your story.</a>
     {% else %}
         <a href="{% url 'login' %}" class="btn btn-dark">Login to create your story.</a>
     {% endif %}
-<hr>
-        {% for story in stories %}    
-    <div class="card">
+    <hr>
+
+    {% for story in stories %}    
+    <div class="card mb-4">
         <div class="row">
-        <div class="col-md-12">
-            <div class="card-body">                                  
+            <div class="col-md-12">
+                <div class="card-body">                                  
                     <h3 class="card-title">{{ story.title }}</h3>
                     <p class="card-info"><strong>from: </strong> {{ story.country }}  <strong>posted at:</strong> 
                     {{ story.shared_at|date:"d/m/Y h:i A" }}
                     {% if story.edited_at %}
                     <strong>edited at:</strong> {{ story.edited_at|date:"d/m/Y h:i A" }}</p>
                     {% endif %}
+                    <p class="card-categories">Categories: 
+                        <strong>{% for category in story.categories.all %}
+                            {{ category.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}</strong>
+                    </p>
                     <p class="card-text">{{ story.description|slice:":100"|safe }}...</p>
                     <p class="card-author">by <strong>{{ story.author }}</strong></p>
                     {% if user.is_authenticated %}
@@ -40,12 +60,12 @@ Stories
             </div>
         </div>   
     </div>
-        {% endfor %}
+    {% empty %}
+    <p>No stories found matching the selected categories.</p>
+    {% endfor %}
 </div>
 
-    
 {% endblock %}
 
 {% block js_files %}
-
 {% endblock %}

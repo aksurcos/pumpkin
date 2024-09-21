@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block css_files %}
+    
+{% endblock %}
+
+{%  block content %}
+
+{% block page_title %}
+Myths
+{% endblock %}
+
+<h1>Myths Page</h1>
+
+    
+<form method="get">
+    {% for category in categories %}
+        <label>
+            <input type="checkbox" name="category" value="{{ category.name }}"
+                   {% if category.name in selected_categories %}checked{% endif %}>
+            {{ category.name }}
+        </label>
+    {% endfor %}
+    <button type="submit">Filter</button>
+</form>
+
+<ul>
+    {% for story in stories %}
+        <li>
+            {{ story.title }} 
+            (Categories: {% for category in story.categories.all %}{{ category.name }}{% if not forloop.last %}, {% endif %}{% endfor %})
+        </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
