@@ -24,10 +24,10 @@ class NewUserForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["password1"].widget = widgets.PasswordInput(attrs={"class":"form-control"})
-        self.fields["password2"].widget = widgets.PasswordInput(attrs={"class":"form-control"})
-        self.fields["username"].widget = widgets.TextInput(attrs={"class":"form-control"})
-        self.fields["email"].widget = widgets.EmailInput(attrs={"class":"form-control"})
+        self.fields["password1"].widget = widgets.PasswordInput(attrs={"class":"form-control","autocomplete": "new-password","aria-describedby":"id_password1"})
+        self.fields["password2"].widget = widgets.PasswordInput(attrs={"class":"form-control","autocomplete": "new-password","aria-describedby":"id_password2"})
+        self.fields["username"].widget = widgets.TextInput(attrs={"class":"form-control", "autocomplete": "username", "aria-describedby":"id_username"})
+        self.fields["email"].widget = widgets.EmailInput(attrs={"class":"form-control", "autocomplete":"email"})
         self.fields["email"].required = True
 
     def clean_email(self):

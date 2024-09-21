@@ -80,28 +80,31 @@ def story_details(request, slug):
 #Edit the post(by author)
 
 @login_required
-def edit(request,id):
+def edit(request, id):
     story = get_object_or_404(Story, id=id)
-    if story.author!= request.user:
-        context = {
+    if story.author != request.user:
+        messages.error(request, "You don't have permission to edit this story.")
+        return redirect('story_details', slug=story.slug)
+    
+    if request.method == 'POST':
+        form = storyForm(request.POST, request.FILES, instance=story)
+        if form.is_valid():
+            story = form.save(commit=False)
+            story.edited_at = timezone.now()
+            story.save()
+            form.save_m2m()
+            messages.success(request, "Your story has been successfully updated!")
+            return redirect('story_details', slug=story.slug)
+        else:
+            messages.error(request, "There was an error updating your story. Please check the form.")
+    else: 
+        form = storyForm(instance=story)
+    
+    context = {
+        "form": form,
         "story": story
     }
-        return render(request,"story_details.html", context)
-    else:
-        if request.method == 'POST':
-            form = storyForm(request.POST, instance=story)
-
-            if form.is_valid():
-                story = form.save(commit=False)
-                story.edited_at = timezone.now()
-                story.save()
-                context = {
-                "story": story
-            }
-                return render(request,"story_details.html", context)
-        else: 
-            form = storyForm(instance=story)
-        return render(request, "edit.html", {"form": form})
+    return render(request, "edit.html", context)
         
 # Delete Post (by author)  
     

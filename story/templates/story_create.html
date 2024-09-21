@@ -11,31 +11,42 @@ Create
 
 {% block content %}
 <div class="container detail-container">
-     <div class="card">  
-        <div class="row">
-            <div class="card-body">
-                <form method="POST" novalidate enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% for field in form %}
-                    <div class="mb-3 {% if field.errors %} invalid {% endif %}">
+    <div class="card">  
+        <div class="card-body">
+            <form method="POST" novalidate enctype="multipart/form-data">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-3 {% if field.errors %}invalid{% endif %}">
                         {% if field.errors %}
                             <div class="alert alert-danger">
                                 {{ field.errors }}
                             </div>
                         {% endif %}
-                        <label class="form-label" for="{{ field.id_for_label}}"> {{ field.label }} </label>
-                        {{ field }}
+                        
+                        {% if field.name == 'categories' %}
+                            <label class="form-label">{{ field.label }}</label>
+                            <div id="id_categories">
+                                {% for checkbox in field %}
+                                    <div class="form-check">
+                                        {{ checkbox.tag }}
+                                        <label class="form-check-label" for="{{ checkbox.id_for_label }}">
+                                            {{ checkbox.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                        {% endif %}
                     </div>  
-                    {% endfor %} 
-                    <button type="submit" class="btn btn-dark">Submit</button>           
-                </form>
-            </div>
+                {% endfor %}
+                <button type="submit" class="btn btn-dark">Submit</button>           
+            </form>
+        </div>
     </div>
-</div> 
-
-
+</div>
 {% endblock %}
-
 
 {% block js_files %}
     <script src="{% static 'js/script.js' %}"></script>

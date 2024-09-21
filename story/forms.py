@@ -17,6 +17,7 @@ class storyForm(forms.ModelForm):
         labels = {
             'title' : 'Give it a title',
             'country' : 'Country',
+            'categories' : 'Categories',
             'description' : 'Give details',            
         }
 
@@ -24,7 +25,7 @@ class storyForm(forms.ModelForm):
             'title' : forms.TextInput(attrs={'class':'form-control'}),
             'country' : forms.TextInput(attrs={'class':'form-control', 'autocomplete':'on'}),
             'categories': forms.CheckboxSelectMultiple(attrs={'class': 'form-check-input'}),
-            'description': forms.Textarea(attrs={'class':'form-control', 'row': 4}),
+            'description': forms.Textarea(attrs={'class':'form-control'}),
                          
         }
 

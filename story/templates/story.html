@@ -26,9 +26,9 @@ Stories and Myths
         {% endif %}
      </form>
         {% if user.is_authenticated %}
-        <a href="{% url 'story_create' %}" class="btn btn-dark">Click to create your story.</a>
+        <a href="{% url 'story_create' %}" class="btn btn-dark">Click to create your post.</a>
         {% else %}
-        <a href="{% url 'login' %}" class="btn btn-dark">Login to create your story.</a>
+        <a href="{% url 'login' %}" class="btn btn-dark">Login to create your post.</a>
         {% endif %}
     </div>
 
@@ -48,8 +48,10 @@ Stories and Myths
                             {{ category.name }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}</strong>
                     </p>
-                    <p class="card-text">{{ story.description|slice:":100"|safe }}</p>
-                    <p class="card-author">by <strong>{{ story.author }}</strong></p>
+                    <p class="card-text">{{ story.description|slice:":200"|safe }}...
+                    </p>
+                    <p class="card-author">by <strong>{{ story.author }}</strong>
+                    </p>
                     {% if user.is_authenticated %}
                     <a href="{% url 'story_details' story.slug %}" class="btn btn-dark">Click to see the story's details.</a>
                     {% else %}  

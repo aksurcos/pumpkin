@@ -6,7 +6,7 @@ from .models import Story, Comment, Category
 @admin.register(Story)
 class StoryAdmin(SummernoteModelAdmin):
     summernote_fields = ("description")
-    list_display = ('title', 'description','country','shared_at', 'get_categories')
+    list_display = ('title', 'author','country','shared_at', 'get_categories')
     list_filter = ('author', 'country', 'categories')
     search_fields = ('title', 'author', 'country')
     list_per_page = (10)
