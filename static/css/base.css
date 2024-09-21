@@ -87,6 +87,12 @@ footer {
 
 }
 
+
+.page-link, .page-item{
+    background-color: #2a2a2a !important;
+    color: var(--primaryColor);
+}
+
 #helpful-info {
     text-align: center;
     padding: 0;
