@@ -13,6 +13,7 @@
 {%  block content %}    
 <div class="container">
     <div class="card detail-card col d-flex justify-content-center align-items-left">
+        <a href="{% url 'story' %}" class="btn btn-dark">Back to list</a>
         <h2 class="card-title">{{ story.title }}</h2>
         <div class="image-container">
             {% if "placeholder" in story.featured_image.url %}
@@ -24,6 +25,11 @@
             {% endif %} 
         </div>
         <p class="card-country">From: <strong>{{ story.country }}</strong></p>
+        <p class="card-categories">Category:
+            <strong>{% for category in story.categories.all %}
+                {{ category.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}</strong>
+        </p>
         <p class="card-date">Posted at: <strong>{{ story.shared_at|date:"d/m/Y h:i A" }}</strong></p>
         {% if story.edited_at %}
         <p>Edited at: <strong>{{ story.edited_at|date:"d/m/Y h:i A" }}</strong></p>

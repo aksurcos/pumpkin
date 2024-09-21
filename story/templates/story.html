@@ -11,8 +11,8 @@ Stories and Myths
 <div class="container">
     <h1 id="story-h1">STORIES & MYTHS</h1>
 
-    <!-- Kategori filtreleme formu -->
-    <form method="get" action="{% url 'story_list' %}" class="mb-4">
+   <div class="card">
+    <form method="get" action="{% url 'story_list' %}" class="btn mb-4">
         {% for category in categories %}
             <label class="mr-3">
                 <input type="checkbox" name="category" value="{{ category.name }}"
@@ -22,16 +22,17 @@ Stories and Myths
         {% endfor %}
         <button type="submit" class="btn btn-dark">Filter</button>
         {% if selected_categories %}
-            <a href="{% url 'story_list' %}" class="btn btn-secondary">Clear Filters</a>
+        <a href="{% url 'story_list' %}" class="btn btn-secondary">Clear Filters</a>
         {% endif %}
-    </form>
-
-    {% if user.is_authenticated %}
-        <a href="create" class="btn btn-dark">Click to create your story.</a>
-    {% else %}
+     </form>
+        {% if user.is_authenticated %}
+        <a href="{% url 'story_create' %}" class="btn btn-dark">Click to create your story.</a>
+        {% else %}
         <a href="{% url 'login' %}" class="btn btn-dark">Login to create your story.</a>
-    {% endif %}
-    <hr>
+        {% endif %}
+</div>
+
+   
 
     {% for story in stories %}    
     <div class="card mb-4">
@@ -44,7 +45,7 @@ Stories and Myths
                     {% if story.edited_at %}
                     <strong>edited at:</strong> {{ story.edited_at|date:"d/m/Y h:i A" }}</p>
                     {% endif %}
-                    <p class="card-categories">Categories: 
+                    <p class="card-categories">Category: 
                         <strong>{% for category in story.categories.all %}
                             {{ category.name }}{% if not forloop.last %}, {% endif %}
                         {% endfor %}</strong>

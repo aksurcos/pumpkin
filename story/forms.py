@@ -8,16 +8,15 @@ class storyForm(forms.ModelForm):
         queryset=Category.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=True,
-        label='Categories'
+        label='Is your post just a story, a myth or both?',
     )
 
     class Meta:
         model = Story
         fields = {'title','country','categories','description',}
         labels = {
-            'title' : 'Title of your story',
+            'title' : 'Give it a title',
             'country' : 'Country',
-            'categories' : 'Is your post personal, story, myth or both?',
             'description' : 'Give details',            
         }
 

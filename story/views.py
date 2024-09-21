@@ -30,25 +30,26 @@ def story_create(request):
     return render(request, "story_create.html", {
         "form": form
     })
-
+    
 def storyList(request):
     stories = Story.objects.all().order_by('-shared_at')
     return render (request, "story.html", {'stories': stories})
 
 def story_list(request):
-    stories = Story.objects.all()
+    stories = Story.objects.all().order_by('-shared_at')
     categories = Category.objects.all()
     
     selected_categories = request.GET.getlist('category')
-    print("Selected categories:", selected_categories)  # Debug için
+    print("Selected categories:", selected_categories)
     
     if selected_categories:
         stories = stories.filter(categories__name__in=selected_categories).distinct()
         
         if len(selected_categories) > 1:
             stories = stories.annotate(num_categories=Count('categories')).filter(num_categories=len(selected_categories))
-    
-    print("Filtered stories:", stories)  # Debug için
+
+    stories = stories.order_by('-shared_at')
+    print("Filtered stories:", stories) 
     
     context = {
         'stories': stories,
