@@ -25,8 +25,15 @@ class Story(models.Model):
     edited_at = models.DateTimeField(null=True, blank=True)  
          
     def save(self, *args, **kwargs):
-        if not self.slug or self.title != Story.objects.get(id=self.id).title:
-            self.slug = self.generate_unique_slug()
+        if not self.slug:
+            self.slug = slugify(self.title)
+        else:
+            try:
+                orig = Story.objects.get(id=self.id)
+                if orig.title != self.title:
+                    self.slug = slugify(self.title)
+            except Story.DoesNotExist:
+                pass 
         super().save(*args, **kwargs)
 
     def generate_unique_slug(self):
