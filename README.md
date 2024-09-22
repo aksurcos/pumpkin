@@ -1,6 +1,6 @@
 <h1 align="center">SCARY PUMPKIN" </h1>
 
-[Click here to check live project]( URL                )
+[Click here to check live project](https://p4-pumpkin-98475df7c050.herokuapp.com/)
 
  Welcome to Scary Pumpkin! Simple and intuitive blog site where users can register, log in, and share eerie stories, myths, and folklore. Our platform is designed with a focus on delivering a seamless experience to help users enjoy and contribute to our collection of chilling tales without distractions.
 
