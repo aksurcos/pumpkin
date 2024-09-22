@@ -89,7 +89,7 @@ Post Stories & Myths: Share your favorite spooky stories, urban legends, or myst
 
     - Share your favorite spooky stories, urban legends, or mysterious myths with the community.
 
-![posting](doc-images/post.jpgg)
+![posting](doc-images/post.jpg)
 
 
    
@@ -337,4 +337,4 @@ Replace `app_name` with the folder's name of `settings.py`
   
 
 ### Inspration and Thanking
-- Thank you to all helpful Slack Code Institute Community that I've especially got help to prepare "README.md.
+- Thank you to all helpful Slack Code Institute Community that I've especially got help to prepare "README.md"
