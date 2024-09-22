@@ -4,7 +4,7 @@
 
  Welcome to Scary Pumpkin! Simple and intuitive blog site where users can register, log in, and share eerie stories, myths, and folklore. Our platform is designed with a focus on delivering a seamless experience to help users enjoy and contribute to our collection of chilling tales without distractions.
 
-![responsive](                                  assets/images/readme/responsive.png)
+![responsive](doc-images/responsive.jpg)
 
 
 ## Index – Table of Contents
