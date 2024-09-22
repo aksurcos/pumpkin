@@ -18,7 +18,6 @@ class Story(models.Model):
     categories = models.ManyToManyField(Category)
     country = models.CharField(max_length=100)
     description = models.TextField(max_length=3000) 
-    featured_image = CloudinaryField('image', default='placeholder')
     shared_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, blank=True)
