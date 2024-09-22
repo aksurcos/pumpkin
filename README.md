@@ -18,6 +18,28 @@
   
 ## User Experience (UX)
 
+## 3.1. The Strategy Plane
+
+### 3.1.1 The Idea
+Scary Pumpkin is an interactive platform where users can share, read, and comment on scary stories. Users can create, edit, and delete their own stories, as well as comment on other users' stories.
+
+### 3.1.2 The Ideal User
+The target audience is individuals who enjoy reading and writing scary stories and local myths, are interested in creative writing, and enjoy community interaction.
+
+- The ideal user loves horror and suspense stories
+- The ideal user enjoys writing and sharing their own stories and mythes
+- The ideal user enjoys reading stories from other writers
+- The ideal user enjoys commenting on stories and getting feedback
+- The ideal user wants to improve their horror lores
+
+### 3.1.3 Site Goals
+- Allow users to share their stories and mythes from their land
+- Provide users with the opportunity to read and comment on other stories
+- Give users the ability to edit and delete their stories
+- Create an inspiring community for creative writers
+- Encourage original content production in the horror and suspense genre
+- Increase interaction among users with comment and develop a culture of feedback
+
 -   ### User stories
 
   # Classification of User Stories
@@ -47,6 +69,8 @@ These are necessary features to have in blog-story sharing site.
 
 **Users stories**
 
+![userstories](doc-images/userstories.jpg)
+
 [All Users Stories ](https://github.com/aksurcos/pumpkin/issues?q=is%3Aissue+is%3Aclosed)
 
 ## Features
@@ -59,13 +83,13 @@ These are necessary features to have in blog-story sharing site.
     -  Users can create accounts and securely log in to access their personal profile and post stories.
 Post Stories & Myths: Share your favorite spooky stories, urban legends, or mysterious myths with the community..
 
-![                        buttons](assets/images/readme/buttons.png)
+![registratelogin](doc-images/reglog.jpg)
 
 -   __Post Stories & Myths__
 
     - Share your favorite spooky stories, urban legends, or mysterious myths with the community.
 
-![                    results](assets/images/readme/result.png)
+![posting](doc-images/post.jpgg)
 
 
    
@@ -73,32 +97,44 @@ Post Stories & Myths: Share your favorite spooky stories, urban legends, or myst
 
     - Edit or delete anytime your posts.
 
-![              footer](assets/images/readme/footer.png)
+![editdelete](doc-images/editdelete.jpg)
 
 
 -   __Comment__
 
     - Commenting is available below posts.
+
+![comment](doc-images/comment.jpg)
  
 -   __Account Page__
 
     - Available to see old posts.
+
+![account](doc-images/profile.jpg)
  
 -   __Changing Password__
 
     - Easy to change password.
 
+![password](doc-images/password.jpg)
+
 -   __Filter Post List__
 
     - Filter if you want specific category.
+
+![filter](doc-images/filter.jpg)
  
 -   __Messages__
 
     - Error or success messages are displayed.
+
+![messages](doc-images/messages.jpg)
  
 -   __Navbar & Footer__
 
     - Easy to route in site.
+
+![navandfooter](doc-images/navfoot.jpg)
     
 
 ## Design
@@ -133,12 +169,15 @@ Post Stories & Myths: Share your favorite spooky stories, urban legends, or myst
 -   __DATABASE SCHEMA__
 
 
-![              footer](assets/images/readme/footer.png)
+![database](doc-images/db.jpg)
 
 
 ## Testing
 
 ### Validator Testing and Lighthose
+
+- Lighthouse
+![CSS results](doc-images/lighthouse.jpg)
 
 - [HTML Validator](https://validator.w3.org/)
 
@@ -156,11 +195,20 @@ Post Stories & Myths: Share your favorite spooky stories, urban legends, or myst
 | Edit | edit.html |Only Logged in| PASS |
 | Delete  | delete-confirm.html  |Only Logged in| PASS |
 
+![htmlvalid](doc-images/htmlvalid.jpg)
+
 
 - [CSS Validator](https://jigsaw.w3.org/css-validator/)
 
     - result for base.css
-      ![CSS results](assets/images/readme/cssvalid.pn.............................)
+      ![CSS results](doc-images/cssvalid.jpg)
+
+- [Python Validator](https://pep8ci.herokuapp.com/#/)
+
+    - result
+    ![python results](doc-images/pyvalid.jpg)
+    3 pages have long line character errors.
+
 
 ### User Stories & Features Testing
 
@@ -237,6 +285,11 @@ Opera
 Safari
 What to expect: Project does its function in all web browsers.
 Result : Project remains its functionality.
+
+### test.py
+![storyform](doc-images/storyformtest.jpg)
+![storyviews](doc-images/storyviewstest.jpg)
+![accounttest](doc-images/acctest.jpg)
 
 ## Deployment
 
