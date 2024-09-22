@@ -1,4 +1,5 @@
-from django.http.response import Http404, HttpResponseNotFound, HttpResponseRedirect, HttpResponseForbidden
+from django.http.response import Http404, HttpResponseNotFound
+from django.http.response import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from .models import Story, Comment, Category
@@ -12,28 +13,29 @@ from django.utils import timezone
 from django.db.models import Q, Count
 
 
-#Create story
+# Create story
 
 @login_required(login_url='accounts/login')
-def story_create(request):  
-    if request.method == 'POST':  
+def story_create(request):
+    if request.method == 'POST':
         form = storyForm(request.POST)
 
         if form.is_valid():
             story = form.save(commit=False)
-            story.author = request.user          
+            story.author = request.user
             story.save()
             form.save_m2m()
             messages.success(request, "You have created story succesfully.")
             return redirect("story")
-        
+
     else:
         form = storyForm()
     return render(request, "story_create.html", {
         "form": form
     })
 
-#Posts List
+# Posts List
+
 
 def storyList(request):
     stories_list = Story.objects.all().order_by('-shared_at')
@@ -45,12 +47,13 @@ def storyList(request):
     }
     return render(request, "story.html", context)
 
-#Filtered Posts
+# Filtered Posts
+
 
 def story_list(request):
     stories = Story.objects.all().order_by('-shared_at')
     categories = Category.objects.all()
-    
+
     selected_categories = request.GET.getlist('category')
     if selected_categories:
         stories = stories.filter(categories__name__in=selected_categories)\
@@ -60,13 +63,14 @@ def story_list(request):
     paginator = Paginator(stories, 5)
     page_number = request.GET.get('page')
     stories = paginator.get_page(page_number)
-    
+
     context = {
         'stories': stories,
         'categories': categories,
         'selected_categories': selected_categories,
     }
-    return render(request, "story.html", context)                    
+    return render(request, "story.html", context)
+
 
 def story_details(request, slug):
     story = get_object_or_404(Story, slug=slug)
@@ -77,7 +81,8 @@ def story_details(request, slug):
     }
     return render(request, "story_details.html", context)
 
-#Edit the post(by author)
+# Edit the post(by author)
+
 
 @login_required
 def edit(request, id):
@@ -85,7 +90,7 @@ def edit(request, id):
     if story.author != request.user:
         messages.error(request, "You don't have permission to edit this story.")
         return redirect('story_details', slug=story.slug)
-    
+
     if request.method == 'POST':
         form = storyForm(request.POST, request.FILES, instance=story)
         if form.is_valid():
@@ -96,28 +101,27 @@ def edit(request, id):
             messages.success(request, "Your story has been successfully updated!")
             return redirect('story_details', slug=story.slug)
         else:
-            messages.error(request, "There was an error updating your story. Please check the form.")
-    else: 
+            messages.error(request, "There was an error, please check the form.")
+    else:
         form = storyForm(instance=story)
-    
+
     context = {
         "form": form,
         "story": story
     }
     return render(request, "edit.html", context)
-        
-# Delete Post (by author)  
-    
+
+# Delete Post (by author)
+
+
 @login_required
 def delete(request, id):
     story = get_object_or_404(Story, id=id)
 
     if story.author != request.user:
-        context = {
-        "story": story
-    }
+        context = {"story": story}
         return render(request, "story_details.html", context)
-    
+
     if request.method == 'POST':
         messages.success(request, "Your story has been deleted successfully.")
         story.delete()
@@ -127,7 +131,8 @@ def delete(request, id):
         "story": story
     })
 
-#Users to comment
+# Users to comment
+
 
 @login_required
 def add_comment(request, slug):
@@ -140,4 +145,4 @@ def add_comment(request, slug):
             comment.author = request.user
             comment.save()
             messages.success(request, "You've successfully commented.")
-    return redirect ('story_details', slug=slug)
+    return redirect('story_details', slug=slug)

@@ -30,10 +30,10 @@ def login_request(request):
                 return render(request, 'login.html', {'form':form})                
         else:
             messages.warning(request, "You could not log in.")
-            return render(request, 'login.html', {'form':form})
+            return render(request, 'login.html', {'form': form})
     else:
         form = LoginUserForm()
-        return render (request, 'login.html', {'form':form})           
+        return render (request, 'login.html', {'form': form})           
     
 #Register
 
@@ -52,7 +52,7 @@ def register_request(request):
         else:
             return render(request, "register.html", {"form":form})
     form = NewUserForm()
-    return render(request, "register.html", {"form":form})
+    return render(request, "register.html", {"form": form})
 
 #Logout
 
@@ -73,10 +73,10 @@ def change_password(request):
             return redirect("account")
         else:
             messages.warning(request, "Your password has not been changed. Check again")
-            return render(request, "change-password.html", {"form":form})
+            return render(request, "change-password.html", {"form": form})
     
     form = PasswordChangeForm(request.user)
-    return render(request, "change-password.html", {"form":form})
+    return render(request, "change-password.html", {"form": form})
 
 #Display own profile page
 
