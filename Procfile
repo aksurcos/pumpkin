@@ -1,1 +1,1 @@
-web: gunicorn pumpkin.wsgi.application
+web: gunicorn pumpkin.wsgi
