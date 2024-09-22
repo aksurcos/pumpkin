@@ -1,4 +1,4 @@
-<h1 align="center">SCARY PUMPKIN" </h1>
+<h1 align="center">" THE SCARY PUMPKIN" </h1>
 
 [Click here to check live project](https://p4-pumpkin-98475df7c050.herokuapp.com/)
 
