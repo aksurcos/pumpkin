@@ -18,6 +18,7 @@ body{
     font-family: var(--text-font);
     font-size: large; 
     background-image: url('/static/images/body-background.jpg'); 
+    
 }
 
 header {
@@ -35,6 +36,19 @@ header {
     color: rgb(212, 106, 0) !important;
 }
 
+.image-container {
+    width: 100%;
+    max-width: 500px; 
+    padding: 10px;
+  }
+
+  .responsive-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 500px;
+  }
+
 /*Story details list page */
 .container.detail-container{
     padding-top: 5%;
@@ -45,6 +59,7 @@ header {
 .detail-card {
     padding: 2rem;
 }
+
 
 /*Navbar design*/
 
@@ -70,6 +85,12 @@ footer {
     position: sticky;
     top: 100%;
 
+}
+
+
+.page-link, .page-item{
+    background-color: #2a2a2a !important;
+    color: var(--primaryColor);
 }
 
 #helpful-info {
