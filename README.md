@@ -1,131 +1,287 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+<h1 align="center">SCARY PUMPKIN" </h1>
 
-Welcome Aysenur K. S. Coskuner,
+[Click here to check live project]( URL                )
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+ Welcome to Scary Pumpkin! Simple and intuitive blog site where users can register, log in, and share eerie stories, myths, and folklore. Our platform is designed with a focus on delivering a seamless experience to help users enjoy and contribute to our collection of chilling tales without distractions.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+![responsive](                                  assets/images/readme/responsive.png)
 
-## Gitpod Reminders
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## Index – Table of Contents
+* [User Experience (UX)](#user-experience-ux) 
+* [Features](#features)
+* [Design](#design)
+* [Used Languages, Programmes and Sites](#used-languages-programmes-and-sites)
+* [Testing](#testing)
+* [Deployment](#deployment)
+* [Credits](#credits)
+  
+## User Experience (UX)
 
-`python3 -m http.server`
+-   ### User stories
 
-A blue button should appear to click: _Make Public_,
+  # Classification of User Stories
 
-Another blue button should appear to click: _Open Browser_.
 
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
+## Could Have
+These are the features that would be nice to have, would make the site looks more modern.
 
-A blue button should appear to click: _Make Public_,
+- Vote
+- Profile Picture
 
-Another blue button should appear to click: _Open Browser_.
 
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+## Must Have
+These are necessary features to have in blog-story sharing site.
 
-To log into the Heroku toolbelt CLI:
+- Register 
+- Login
+- Display list
+- Filter
+- Create post 
+- Edit post
+- Delete post
+- Comment
+- Account page
+- Change password
+- Documentation
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+**Users stories**
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
+[All Users Stories ](https://github.com/aksurcos/pumpkin/issues?q=is%3Aissue+is%3Aclosed)
 
-### Connecting your Mongo database
+## Features
 
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
+### Existing Features
 
-------
 
-## Release History
+-   __User Registration and Login__
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+    -  Users can create accounts and securely log in to access their personal profile and post stories.
+Post Stories & Myths: Share your favorite spooky stories, urban legends, or mysterious myths with the community..
 
-**June 18, 2024,** Add Mongo back into template
+![                        buttons](assets/images/readme/buttons.png)
 
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
+-   __Post Stories & Myths__
 
-**May 28 2024:** Fix Mongo and Links installs
+    - Share your favorite spooky stories, urban legends, or mysterious myths with the community.
 
-**April 26 2024:** Update node version to 16
+![                    results](assets/images/readme/result.png)
 
-**September 20 2023:** Update Python version to 3.9.17.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+   
+-   __Edit & Delete__
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+    - Edit or delete anytime your posts.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+![              footer](assets/images/readme/footer.png)
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+-   __Comment__
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+    - Commenting is available below posts.
+ 
+-   __Account Page__
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+    - Available to see old posts.
+ 
+-   __Changing Password__
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+    - Easy to change password.
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+-   __Filter Post List__
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+    - Filter if you want specific category.
+ 
+-   __Messages__
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+    - Error or success messages are displayed.
+ 
+-   __Navbar & Footer__
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+    - Easy to route in site.
+    
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+## Design
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+-   ### General Design
+    - The portal has nostalgic basic looking with some pumpkins.
 
-------
+-   ### Color Set
+    -  Color palette is chosen as orange and black to reflect Halloween's spirit.
+       
+-   ### Font-Type
+    -   It is imported from Google Fonts. It has compatible simple looking to make reading easy.
+    
 
-## FAQ about the uptime script
+## Used Languages, Programmes and Sites
 
-**Why have you added this script?**
+-   HTML5
+-   CSS3
+-   Python
+-   JavaScript
+-   Bootstrap
+-   Git
+-   GitHub
+-   Gitpod
+-   Django
+-   PostgreSQL
+-   Heroku
+-   Font Awesome
+-   Pexels.com
+-   ChatGPT(To generate posted stories and myths)
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+-   __DATABASE SCHEMA__
 
-**How will this affect me?**
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+![              footer](assets/images/readme/footer.png)
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+## Testing
 
-**So….?**
+### Validator Testing and Lighthose
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+- [HTML Validator](https://validator.w3.org/)
 
-**Can I opt out?**
+| Directory	  | File	 |State| Result|
+| ------------- | ------------- | ------------- | ------------- |
+|Index  | index.html  | Not Applicable  | PASS | 
+| Register  | register.html  | Not Applicable  | PASS |
+| Login | login.html  | Not Applicable  | PASS |
+| Account Page  | account.html |Only Logged in  | PASS  |
+| Change Password | change-password.html  |Only Logged in  | PASS |
+| Post List | story.html | Not Applicable| PASS |
+| Filtered Post List | story-list.html |  Not Applicable | PASS |
+| Post Details| story-details.html |Only Logged in| PASS |
+| Create | story-create.html | Only Logged in| PASS |
+| Edit | edit.html |Only Logged in| PASS |
+| Delete  | delete-confirm.html  |Only Logged in| PASS |
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+- [CSS Validator](https://jigsaw.w3.org/css-validator/)
 
-**Anything more?**
+    - result for base.css
+      ![CSS results](assets/images/readme/cssvalid.pn.............................)
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### User Stories & Features Testing
 
----
+## Register
+- Tested that a user can successfully register with valid information
+- Verified that appropriate error messages are displayed for invalid inputs
+- Ensure that the newly registered user can log in with their credentials
 
-Happy coding!
+## Login
+- Confirmed that a registered user can log in with correct credentials
+- Verified that appropriate error messages are shown for incorrect username or password
+
+## Display List
+- Checked that the paginated list of posts is displayed correctly
+- Verified that pagination works as expected
+- Ensured that post details (title, author, date etc.) are displayed accurately
+
+## Filter
+- Tested that users can filter posts by category
+- Verified that multiple category selections work correctly
+- Ensured that the filtered results are accurate and update in real-time
+
+## Create Post
+- Confirmed that authenticated users can access the create post page
+- Tested that all form fields (title, content, category) work correctly
+- Verified that appropriate error messages are shown for invalid inputs
+- Ensured that the post is successfully created and appears in the list
+
+## Edit Post
+- Checked that only the author of a post can access the edit functionality
+- Test that all form fields are pre-populated with existing post data
+- Verified that changes are saved correctly and reflected in the post list
+- Ensured that appropriate error messages are shown for invalid edits
+
+## Delete Post
+- Confirmed that only the author of a post can delete it
+- Tested the delete confirmation process
+- Verified that the post is removed from the list after deletion
+- Ensured that associated comments are also deleted
+
+## Comment
+- Tested that authenticated users can add comments to posts
+- Verified that comments are displayed correctly under the respective posts
+- Ensure that comments are associated with the correct post
+
+## Account Page
+- Confirmed that users can access their own account page
+- Verified that user information is displayed correctly
+- Ensured that the user's post history is accurately displayed
+
+## Change Password
+- Checked that users can access the change password functionality
+- Tested that the current password is required before allowing changes
+- Ensured that the password is successfully updated and the user can log in with the new password
+
+## Documentation
+- Verified that the documentation is comprehensive and up-to-date
+- Tested any code examples or instructions provided in the documentation
+- Ensured that the documentation covers all major features and functionalities
+- Checked for clarity and readability of the documentation
+
+### Viewport Testing
+Task : To test responsiveness on different devices with different view-port.
+What to expect : Project does response well on all devices.
+Result : No content is distorted on different view-port.
+
+### Compatibility Testing
+Task : To test functionality in different browsers.
+Method : All test cases listed above were tested in following applications:
+Google Chrome
+Mozilla Firefox
+Microsoft Edge
+Opera
+Safari
+What to expect: Project does its function in all web browsers.
+Result : Project remains its functionality.
+
+## Deployment
+
+### Deployment steps
+
+- Log in to your account at heroku.com if you don't have any, create one.
+- Click on create a new app, give an matchless app name and then choose your region
+- Connect Heroku app to your Github account and write the repository name, click 'Search' and then 'Connect'
+- Click on your app and then go to the "Settings" tab.
+- Scroll down to the "config vars" section and enter the following:
+   - `DATABASE_URL`: set this
+   - `SECRET_KEY`: 1
+   - `CLOUDINARY_URL`: Set your Cloudinary URL.
+   - `Port`: set to 8000.
+- Go to "Deploy" tab and go down to the "Deployment method" section and select GitHub and then sign into your account.
+- Below that in the "search for a repository to connect to" search box enter your repository's name.
+- Once it has been connected scroll down to the "Manual Deploy" and click "Deploy branch".
+- "View App" button will be below.
+
+You'll also need these two files when deploying to Heroku.
+- `requirements.txt`
+- `Procfile`
+
+To create "requirements.txt"
+- pip3 install -r requirements.txt
+
+To update"requirements.txt"
+- pip3 freeze --local > requirements.txt
+  
+To create "Procfile"
+ - echo web: gunicorn app_name.wsgi > Procfile
+
+Replace `app_name` with the folder's name of `settings.py`
+
+    
+## Credits
+
+### Icons
+- [Font Awesome](https://fontawesome.com/)
+
+
+### Codes   
+- Code Institute Ready Template
+- The previous projects' README.md
+  
+
+### Inspration and Thanking
+- Thank you to all helpful Slack Code Institute Community that I've especially got help to prepare "README.md.
